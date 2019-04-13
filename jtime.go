@@ -15,9 +15,9 @@ func (jtime *JsonTime) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
-	t, err := time.Parse("2006-01-02", s)
+	t, _ := time.Parse("2006-01-02", s)
 	jtime.Time = t
-	return err
+	return nil
 }
 
 func (jtime *JsonTime) MarshalJSON() ([]byte, error) {
