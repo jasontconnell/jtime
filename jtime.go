@@ -23,5 +23,9 @@ func (jtime *JsonTime) UnmarshalJSON(b []byte) error {
 func (jtime *JsonTime) MarshalJSON() ([]byte, error) {
 	s := jtime.Format("2006-01-02")
 
+	if s == "0001-01-01" {
+		return []byte("null"), nil
+	}
+
 	return json.Marshal(s)
 }
